@@ -1,13 +1,10 @@
-// src/resolvers/userResolvers.js
-
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const dotenv = require('dotenv');
-const { JWT_SECRET } = process.env;
-
 
 dotenv.config();
+
 const generateToken = (user) => {
   return jwt.sign(
     {

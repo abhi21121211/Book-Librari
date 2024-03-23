@@ -1,13 +1,11 @@
-// src/utils/authUtils.js
-
 const jwt = require('jsonwebtoken');
-
 const dotenv = require('dotenv');
+
 dotenv.config();
+
 const authenticateToken = (req, res, next) => {
-  const token = req.cookies.token || ''
-  
-  console.log(req.cookies.token)
+  const token = req.headers.authorization || '';
+console.log(req.headers)
   if (!token) {
     console.log("token1");
     return res.status(401).json({ message: 'Authentication failed' });

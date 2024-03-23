@@ -1,5 +1,3 @@
-// src/resolvers/bookResolvers.js
-
 const Book = require('../models/Book');
 
 const bookResolvers = {
@@ -38,7 +36,6 @@ const bookResolvers = {
       }
     },
   },
-  
 };
 
 module.exports = bookResolvers;
