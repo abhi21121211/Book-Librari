@@ -1,13 +1,15 @@
 // src/utils/authUtils.js
 
 const jwt = require('jsonwebtoken');
-const { JWT_SECRET } = process.env;
+
 const dotenv = require('dotenv');
 dotenv.config();
 const authenticateToken = (req, res, next) => {
-  const token = req.cookies.token || '';
-
+  const token = req.cookies.token || ''
+  
+  console.log(req.cookies.token)
   if (!token) {
+    console.log("token1");
     return res.status(401).json({ message: 'Authentication failed' });
   }
 
@@ -16,6 +18,7 @@ const authenticateToken = (req, res, next) => {
     req.user = decoded;
     next();
   } catch (error) {
+    console.log("token2");
     return res.status(401).json({ message: 'Authentication failed' });
   }
 };
