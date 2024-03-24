@@ -25,13 +25,23 @@ const bookResolvers = {
         throw new Error('Authentication required');
       }
       try {
+        // Create a new Book document
         const newBook = new Book({
-          ...input,
-          owner: user.id,
+          title: input.title,
+          author: input.author,
+          owner: user.id, // Set owner ID as a string
         });
+
+        // Save the new book to the database
         await newBook.save();
-        return newBook.populate('owner').execPopulate();
+
+        // Retrieve the newly saved book from the database
+        const savedBook = await Book.findById(newBook._id).populate('owner');
+
+        // Return the newly saved book
+        return savedBook;
       } catch (error) {
+        console.error('Error adding book:', error); // Log the error message
         throw new Error('Error adding book');
       }
     },
