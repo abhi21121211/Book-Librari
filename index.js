@@ -6,7 +6,7 @@ const { typeDefs, resolvers } = require('./src/schema');
 const { authenticateToken } = require('./src/utils/authUtils');
 
 // Load environment variables from .env file
-dotenv.config();
+dotenv.config(); 
 
 // Create an Express application
 const app = express();

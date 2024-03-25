@@ -1,5 +1,3 @@
-// src/models/User.js
-
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
@@ -19,8 +17,8 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ['user', 'admin'],
-    default: 'user',
+    enum: ['admin', 'user'], // Define roles as admin and user
+    default: 'user', // Default role is user
   },
 });
 

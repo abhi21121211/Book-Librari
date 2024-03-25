@@ -1,19 +1,17 @@
-// src/schema/userSchema.js
-
 const { gql } = require('apollo-server-express');
 
-const userTypeDefs = gql`
-  type User {
-    id: ID!
-    username: String!
-    email: String!
-    role: String!
-  }
-
+const typeDefs = gql`
+type User {
+  id: ID!
+  username: String!
+  email: String!
+  role: String!
+}
   input RegisterInput {
     username: String!
     email: String!
     password: String!
+    role: String!
   }
 
   input LoginInput {
@@ -33,10 +31,10 @@ const userTypeDefs = gql`
   }
 
   extend type Mutation {
-    register(input: RegisterInput!): AuthPayload!
-    login(input: LoginInput!): AuthPayload!
-    logout: Boolean!
+    registerUser(input: RegisterInput!): AuthPayload!
+    loginUser(input: LoginInput!): AuthPayload!
+    logout: Boolean
   }
 `;
 
-module.exports = userTypeDefs;
+module.exports = typeDefs;
