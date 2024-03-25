@@ -31,8 +31,8 @@ type User {
   }
 
   extend type Mutation {
-    registerUser(input: RegisterInput!): AuthPayload!
-    loginUser(input: LoginInput!): AuthPayload!
+    register(input: RegisterInput!): AuthPayload!
+    login(input: LoginInput!): AuthPayload!
     logout: Boolean
   }
 `;

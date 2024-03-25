@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const authenticateToken = (req, res, next) => {
-  const token = req.headers.authorization.split(" ")[1] || '';
+  const token = req.headers.authorization?req.headers.authorization.split(" ")[1] || '':null;
   // const token = req.headers.authorization || '';
   if (!token) {
     // console.log("token1");
