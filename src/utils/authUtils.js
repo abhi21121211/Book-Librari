@@ -5,12 +5,12 @@ dotenv.config();
 
 const authenticateToken = (req, res, next) => {
   const token = req.headers.authorization.split(" ")[1] || '';
-
+  // const token = req.headers.authorization || '';
   if (!token) {
     // console.log("token1");
     return res.status(401).json({ message: 'Authentication failed' });
   }
-  // console.log(token);
+  console.log(token);
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = decoded;

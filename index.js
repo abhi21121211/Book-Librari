@@ -8,6 +8,7 @@ const { authenticateToken } = require('./src/utils/authUtils');
 // Load environment variables from .env file
 dotenv.config(); 
 
+
 // Create an Express application
 const app = express();
 
@@ -33,13 +34,14 @@ const server = new ApolloServer({
     return { req, res, user: req.user }; // Add the `user` object to the context
   },
 });
+// Apply authentication middleware to all GraphQL endpoints
 app.use(authenticateToken);
 // Start the server and apply middleware
 async function startServer() {
   await server.start();
   server.applyMiddleware({ app });
   
-  // Apply authentication middleware to all GraphQL endpoints
+  
 
 
   // Define port
