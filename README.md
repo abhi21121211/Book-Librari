@@ -155,7 +155,7 @@ To get started with Book Library, follow these steps:
 
 You can import the following Postman collection to test the endpoints:
 
-[Book Library Postman Collection](https://www.getpostman.com/collections/POSTMAN_COLLECTION_ID)
+[Book Library Postman Collection](https://app.getpostman.com/join-team?invite_code=29fc8eafca2495b338e6e8d9126ed757&target_code=b9a93c704410c29e5fe8ad83d4706336)
 
 ## Contributing
 
