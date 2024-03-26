@@ -83,15 +83,6 @@ To get started with Book Library, follow these steps:
     }
     ```
 
-- **Logout User:**
-  - Method: POST
-  - URL: `https://book-librari.onrender.com/graphql`
-  - Body (GraphQL):
-    ```graphql
-    mutation {
-      logout
-    }
-    ```
 
 ### Book Management
 
@@ -150,6 +141,17 @@ To get started with Book Library, follow these steps:
     ```
 
    Replace `"YOUR_BOOK_ID_HERE"` with the ID of the book you want to retrieve.
+
+  
+- **Logout User:**
+  - Method: POST
+  - URL: `https://book-librari.onrender.com/graphql`
+  - Body (GraphQL):
+    ```graphql
+    mutation {
+      logout
+    }
+    ```
 
 ## Postman Collection
 
