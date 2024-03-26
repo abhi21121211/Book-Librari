@@ -1,48 +1,39 @@
-Certainly! Below is an example README file that you can use for your project:
 
----
 
-# Book Library GraphQL API
+# Book Library
 
-Welcome to the Book Library GraphQL API! This API allows you to manage books and users within a library system. You can register users, login/logout, add new books, browse available books, and more.
+Welcome to Book Library, a Node.js application with a GraphQL API for managing books and users.
+
+## Overview
+
+Book Library is a web application built with Node.js and GraphQL. It allows users to manage books and users, including functionalities for authentication, book management (add, retrieve), and user management (register, login, logout).
 
 ## Getting Started
 
-To get started with the Book Library GraphQL API, follow the instructions below.
-
-### Prerequisites
-
-Before running the application, make sure you have the following installed:
-
-- Node.js
-- MongoDB
-
-### Installation
+To get started with Book Library, follow these steps:
 
 1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/abhi21121211/Book-Librari.git
    ```
 
 2. Install dependencies:
 
    ```bash
-   cd book-library-graphql
+   cd Book-Librari
    npm install
    ```
 
-3. Set up environment variables:
+3. Create a `.env` file in the root directory and add the following environment variables:
 
-   Create a `.env` file in the root directory and add the following environment variables:
-
-   ```plaintext
+   ```
    PORT=3000
-   MONGODB_URI=mongodb://localhost:27017/book-library
-   JWT_SECRET=your-secret-key
+   MONGODB_URI=YOUR_MONGODB_URI
+   JWT_SECRET=YOUR_JWT_SECRET
    ```
 
-   Replace `your-secret-key` with your own secret key for JWT token encryption.
+   Replace `YOUR_MONGODB_URI` with your MongoDB connection string and `YOUR_JWT_SECRET` with your JWT secret key.
 
 4. Start the server:
 
@@ -50,139 +41,123 @@ Before running the application, make sure you have the following installed:
    npm start
    ```
 
-The server should now be running at `http://localhost:3000/graphql`.
+5. The server will start running on `http://localhost:3000`.
 
 ## Endpoints
 
 ### Authentication
 
-#### Register User
-
-- **Method:** POST
-- **URL:** `http://localhost:3000/graphql`
-- **Body:**
-  ```graphql
-  mutation {
-    register(input: { username: "testuser", email: "test@example.com", password: "password" }) {
-      token
-      user {
-        id
-        username
-        email
-        role
+- **Register User:**
+  - Method: POST
+  - URL: `https://book-librari.onrender.com/graphql`
+  - Body (GraphQL):
+    ```graphql
+    mutation {
+      register(input: { username: "testuser", email: "test@example.com", password: "password",role:"user" }) {
+        token
+        user {
+          id
+          username
+          email
+          role
+        }
       }
     }
-  }
-  ```
+    ```
 
-#### Login User
-
-- **Method:** POST
-- **URL:** `http://localhost:3000/graphql`
-- **Body:**
-  ```graphql
-  mutation {
-    login(input: { email: "test@example.com", password: "password" }) {
-      token
-      user {
-        id
-        username
-        email
-        role
+- **Login User:**
+  - Method: POST
+  - URL: `https://book-librari.onrender.com/graphql`
+  - Body (GraphQL):
+    ```graphql
+    mutation {
+      login(input: { email: "test@example.com", password: "password" }) {
+        token
+        user {
+          id
+          username
+          email
+          role
+        }
       }
     }
-  }
-  ```
+    ```
 
-#### Logout User
-
-- **Method:** POST
-- **URL:** `http://localhost:3000/graphql`
-- **Body:**
-  ```graphql
-  mutation {
-    logout
-  }
-  ```
+- **Logout User:**
+  - Method: POST
+  - URL: `https://book-librari.onrender.com/graphql`
+  - Body (GraphQL):
+    ```graphql
+    mutation {
+      logout
+    }
+    ```
 
 ### Book Management
 
-#### Get All Books
-
-- **Method:** POST
-- **URL:** `http://localhost:3000/graphql`
-- **Body:**
-  ```graphql
-  query {
-    getBooks {
-      id
-      title
-      author
-      owner {
+- **Get All Books:**
+  - Method: POST
+  - URL: `https://book-librari.onrender.com/graphql`
+  - Body (GraphQL):
+    ```graphql
+    query {
+      getBooks {
         id
-        username
+        title
+        author
+        owner {
+          id
+          username
+        }
       }
     }
-  }
-  ```
+    ```
 
-#### Add a Book
-
-- **Method:** POST
-- **URL:** `http://localhost:3000/graphql`
-- **Body:**
-  ```graphql
-  mutation {
-    addBook(input: { title: "Sample Book", author: "Sample Author" }) {
-      id
-      title
-      author
-      owner {
+- **Add a Book:**
+  - Method: POST
+  - URL: `https://book-librari.onrender.com/graphql`
+  - Body (GraphQL):
+    ```graphql
+    mutation {
+      addBook(input: { title: "Sample Book", author: "Sample Author" }) {
         id
-        username
+        title
+        author
+        owner {
+          id
+          username
+        }
       }
     }
-  }
-  ```
+    ```
 
-#### Get Book by ID
-
-- **Method:** POST
-- **URL:** `http://localhost:3000/graphql`
-- **Body:**
-  ```graphql
-  query {
-    getBook(id: "YOUR_BOOK_ID_HERE") {
-      id
-      title
-      author
-      owner {
+- **Get Book by ID:**
+  - Method: POST
+  - URL: `https://book-librari.onrender.com/graphql`
+  - Body (GraphQL):
+    ```graphql
+    query {
+      getBook(id: "YOUR_BOOK_ID_HERE") {
         id
-        username
+        title
+        author
+        owner {
+          id
+          username
+        }
       }
     }
-  }
-  ```
+    ```
 
-Replace `"YOUR_BOOK_ID_HERE"` with the ID of the book you want to retrieve.
+   Replace `"YOUR_BOOK_ID_HERE"` with the ID of the book you want to retrieve.
 
-### Making Requests with Postman
+## Postman Collection
 
-1. Open Postman.
-2. Create a new request.
-3. Set the method to `POST`.
-4. Enter the request URL (`http://localhost:3000/graphql`).
-5. Select the `Body` tab.
-6. Choose `GraphQL` from the dropdown.
-7. Enter the GraphQL query or mutation in the request body.
-8. Click `Send` to make the request.
+You can import the following Postman collection to test the endpoints:
 
-That's it! You can now use Postman to interact with the Book Library GraphQL API.
+[Book Library Postman Collection](https://www.getpostman.com/collections/POSTMAN_COLLECTION_ID)
 
-## Further Assistance
+## Contributing
 
-If you have any questions or need further assistance, feel free to contact us at [your-email@example.com](mailto:your-email@example.com).
+Contributions are welcome! Feel free to open issues or submit pull requests to contribute to this project.
 
----
-
-Feel free to customize this README file with additional information or instructions specific to your project. If you have any questions or need further assistance, let me know!
